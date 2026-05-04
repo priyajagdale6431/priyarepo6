@@ -1,1 +1,29 @@
+name: etl pipeline
+on:
+    push:
+        branches:
+            - main
+jobs:
+    extract_data-job:
+        runs_on: ubuntu-latest
+        steps:
+            -name: checkout code
+            uses: actions/checkout@v2
+            -name: Run extract_data.py
+            run: python extract_data.py
 
+    transform-data-job:
+        runs_on: ubuntu-latest
+        steps:
+            -name: checkout code
+            uses: actions/checkout@v2
+            -name: Run transform_data.py
+            run: python transform_data.py
+
+    load-data-job:
+        runs_on: ubuntu-latest
+        steps:
+            -name: checkout code
+            uses: actions/checkout@v2
+            -name: Run load_data.py
+            run: python load_data.py
